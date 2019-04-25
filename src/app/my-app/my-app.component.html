@@ -1,0 +1,23 @@
+<div style="text-align:center;background: lightblue">
+    <h1>LIVE STOCKS DATA</h1>
+</div>
+  <p-table [columns]="cols" [value]="dict | keyvalue">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [ngStyle]="{backgroundColor:getColor(rowData.value)}">
+            <td>{{rowData.key}}</td>
+             <td *ngIf="+rowData.value>0">{{+rowData.value}}</td>
+            <td *ngIf="+rowData.value<0">{{rowData.value*(-1)}}</td> 
+            <td>{{ dateObj[rowData.key] | date:'medium' }}</td>
+        </tr> 
+    </ng-template>
+  </p-table>
+  
+  
+  
